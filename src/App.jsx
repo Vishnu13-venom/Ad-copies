@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import { BiPlus, BiComment, BiUser, BiFace, BiSend } from "react-icons/bi";
+import { IoLanguage, IoSettingsOutline } from "react-icons/io5";
 
+import { MdHistory } from "react-icons/md";
 function App() {
   const [text, setText] = useState("");
   const [message, setMessage] = useState(null);
@@ -105,46 +107,57 @@ function App() {
     <>
       <div className="container">
         <section className="sidebar">
-          <div className="sidebar-header" onClick={createNewChat} role="button">
-            <BiPlus size={20} />
-            <button>New Chat</button>
+          <div className="navbar">
+          <h1>Ad Titles Input</h1>
           </div>
-          <div className="sidebar-history">
-            {uniqueTitles.length > 0 && <p>Today</p>}
-            <ul>
-              {uniqueTitles?.map((uniqueTitle, idx) => (
-                <li key={idx} onClick={() => backToHistoryPrompt(uniqueTitle)}>
-                  <BiComment />
-                  {uniqueTitle.slice(0, 18)}
-                </li>
-              ))}
-            </ul>
-          </div>
+          <div className="company-form">
+      <label className="companyName">Brand Name</label>
+      <input type="text" id="companyName" placeholder="Enter Brand name" />
+
+      <label className="description">Product/Service Description</label>
+      <textarea id="description" placeholder="Enter description"></textarea>
+
+      <label className="companyName">Keywords</label>
+      <input type="text" id="companyName" placeholder="AI Writer" />
+
+      <button type="submit" className="submit-button">Generate</button>
+    </div>    
+        
+          
+
           <div className="sidebar-info">
             <div className="sidebar-info-upgrade">
               <BiUser />
-              <p>Upgrade to Plus</p>
+              <p>Account Information</p>
             </div>
             <div className="sidebar-info-user">
-              <BiFace />
-              <p>vgerun97@gmail.com</p>
+              <MdHistory />
+              <p>History</p>
+              
             </div>
+            <div className="sidebar-info-user">
+              <IoLanguage/>
+              <p>Language</p>
+              
+            </div>
+
+            <div className="sidebar-info-user">
+            <IoSettingsOutline />
+              <p>Settings</p>
+              
+            </div>
+           
           </div>
         </section>
 
         <section className="main">
           {!currentTitle && (
             <div className="empty-chat-container">
-              <img
-                src="../public/ChatGPT_logo.svg"
-                width={45}
-                height={45}
-                alt="chat gpt logo"
-              />
-              <h1>Chat GPT Clone</h1>
-              <h3>How can I help you today?</h3>
+              
+              <h1>Generating Ad Copies</h1>
             </div>
           )}
+
           <div className="main-header">
             <ul>
               {currentChat?.map((chatMsg, idx) => (
@@ -192,7 +205,7 @@ function App() {
               )}
             </form>
             <p>
-              ChatGPT can make mistakes. Consider checking important
+              GenAI can make mistakes. Consider checking important
               information.
             </p>
           </div>
